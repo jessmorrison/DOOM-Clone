@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[AddComponentMenu("Control Script/Mouse Look")]
 public class MouseLook : MonoBehaviour {
     public enum RotationAxes
     {
@@ -11,15 +13,15 @@ public class MouseLook : MonoBehaviour {
     }
     public RotationAxes axes = RotationAxes.MouseXandY;
 
-    public float sensitivityHor = 9f;
-    public float sensitivityVert = 9f;
+    public float sensitivityHor = 9.0f;
+    public float sensitivityVert = 9.0f;
 
     public float minimumVert = -45.0f;
     public float maximumVert = 45.0f;
 
     private float _rotationX = 0;
 
-    private void Start()
+  void Start()
     {
         Rigidbody body = GetComponent<Rigidbody>();
         if (body != null)
@@ -28,8 +30,7 @@ public class MouseLook : MonoBehaviour {
         }
     } 
     void Update () {
-		if (axes == RotationAxes.MouseX)
-        {
+		if (axes == RotationAxes.MouseX) {
             transform.Rotate (0, Input.GetAxisRaw("Mouse X") * sensitivityHor, 0);
         }
 
@@ -38,8 +39,7 @@ public class MouseLook : MonoBehaviour {
             _rotationX -= Input.GetAxisRaw("Mouse Y") * sensitivityVert;
             _rotationX = Mathf.Clamp(_rotationX, minimumVert, maximumVert);
 
-            float delta = Input.GetAxisRaw("Mouse X") * sensitivityHor;
-            float rotationY = transform.localEulerAngles.y + delta;
+            float rotationY = transform.localEulerAngles.y;
 
             transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
         }

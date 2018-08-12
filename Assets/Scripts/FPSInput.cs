@@ -11,7 +11,7 @@ public class FPSInput : MonoBehaviour {
 
     private CharacterController _charController;
 
-    private void Start()
+    void Start()
     {
         _charController = GetComponent<CharacterController>();
     }
