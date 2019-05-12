@@ -11,8 +11,7 @@ public class OrbitCamera : MonoBehaviour {
     void Start() {
         _rotY = transform.eulerAngles.y;
         _offset = target.position - transform.position;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
+
     }
     void LateUpdate() { 
         float horInput = Input.GetAxis("Horizontal");
